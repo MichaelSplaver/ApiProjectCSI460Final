@@ -1,5 +1,7 @@
 # CSI 460 Final - API Application by Michael Splaver
 
+NOTE: Currently Tracking **ONE** major bug in the issues tab, click on Issues for more details
+
 This app can interact with my self-hosted API by using GET, POST, PATCH, DELETE HTTP requests. For this project I decided to utilize the same API that we setup earlier in the quarter (Students API).
 
 ### Landing Page
