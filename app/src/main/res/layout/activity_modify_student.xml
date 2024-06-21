@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ModifyStudentActivity"
-    android:background="#1B1B1B"
+    android:background="#082933"
     android:orientation="vertical">
 
     <TextView
@@ -81,7 +81,7 @@
         android:layout_margin="10dp"
         android:text="Modify Student"
         android:textAllCaps="false"
-        android:backgroundTint="#4A4949"
+        android:backgroundTint="#0F7C7C"
         android:layout_gravity="center"
         android:paddingHorizontal="65dp" />
 
@@ -92,7 +92,7 @@
         android:layout_margin="10dp"
         android:text="Back"
         android:textAllCaps="false"
-        android:backgroundTint="#4A4949"
+        android:backgroundTint="#0F7C7C"
         android:layout_gravity="center"
         android:paddingHorizontal="85dp" />
 </LinearLayout>

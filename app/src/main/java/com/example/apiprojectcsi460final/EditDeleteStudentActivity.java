@@ -23,10 +23,11 @@ public class EditDeleteStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delete_student);
 
+        //api call
         new ApiHelper.GetAllStudentsTask(findViewById(android.R.id.content).getRootView(),this, true).execute();
 
         backBtn = findViewById(R.id.backbtn3);
-
+        //return user to main activity
         backBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

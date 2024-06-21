@@ -17,7 +17,7 @@ public class StudentEditAdapter extends StudentAdapter{
 
     @Override
     public void onBindViewHolder(@NonNull StudentAdapter.ViewHolder holder, int position) {
-        //overwriting the base VideogameAdapter to make the edit/delete buttons visible
+        //overwriting the base StudentAdapter to make the edit/delete buttons visible
         Student student = studentsArrayList.get(position);
         holder.studentidtext.setText("ID: " + student.getId());
         holder.studentnametext.setText(student.getFirstName() + " " + student.getLastName());
@@ -35,7 +35,7 @@ public class StudentEditAdapter extends StudentAdapter{
             context.startActivity(i);
         });
 
-        //passing the relevant info in extras to the ModifyGame Activity
+        //passing the relevant info in extras to the ModifyStudent Activity
         holder.editbtn.setOnClickListener(view -> {
             Intent i = new Intent(context, ModifyStudentActivity.class);
 

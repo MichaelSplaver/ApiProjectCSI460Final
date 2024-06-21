@@ -22,7 +22,8 @@ public class ViewStudents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_students);
-
+        
+        //api call
         new ApiHelper.GetAllStudentsTask(findViewById(android.R.id.content).getRootView(),this, false).execute();
 
         backBtn = findViewById(R.id.backbtn1);

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,25 +13,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
 import com.google.gson.JsonObject;
 
-import javax.crypto.Cipher;
-
+//API Helper Class contains all the classes and methods used to interact with the API
 public class ApiHelper {
 
+    //method to parse out an array list of students from a json string result
     public static ArrayList<Student> parseStudents(String jres) {
         ArrayList<Student> retList = new ArrayList<>();
 
@@ -58,6 +50,7 @@ public class ApiHelper {
         return retList;
     }
 
+    //method to encode a student into a json object to be passed in API requests.
     public static String encodeStudent(Student student) {
         JsonObject jobj = new JsonObject();
         jobj.addProperty("first_name",student.getFirstName());
@@ -68,6 +61,7 @@ public class ApiHelper {
         return jobj.toString();
     }
 
+    //class for retrieving a complete list of all students in the API
     public static class GetAllStudentsTask extends AsyncTask<Void,Void,String> {
         private View rootView;
         private Context ctx;
@@ -81,6 +75,7 @@ public class ApiHelper {
         @Override
         protected String doInBackground(Void... voids) {
             HttpURLConnection urlConnection = null;
+            //http connection code partially borrowed from https://blog.codavel.com/how-to-integrate-httpurlconnection
             try {
                 StringBuilder res = new StringBuilder();
                 URL url = new URL("https://f617-47-161-26-166.ngrok-free.app/api/basic/");
@@ -98,7 +93,7 @@ public class ApiHelper {
                 urlConnection.disconnect();
             }
         }
-
+        //upon completion of get request populate the recycler views with the GET data. Include edit/delete icons if specified.
         @Override
         protected void onPostExecute(String result) {
             ArrayList<Student> students = parseStudents(result);
@@ -119,7 +114,7 @@ public class ApiHelper {
             studentsRV.setAdapter(studentAdapter);
         }
     }
-
+    //class for deletion of a student by student id
     public static class DeleteStudentTask extends AsyncTask<Void,Void,Void> {
 
         private Context ctx;
@@ -132,6 +127,7 @@ public class ApiHelper {
         @Override
         protected Void doInBackground(Void... voids) {
             HttpURLConnection urlConnection = null;
+            //http connection code partially borrowed from https://blog.codavel.com/how-to-integrate-httpurlconnection
             try {
                 StringBuilder res = new StringBuilder();
                 URL url = new URL("https://f617-47-161-26-166.ngrok-free.app/api/basic/" + studentId + "/");
@@ -152,7 +148,7 @@ public class ApiHelper {
                 urlConnection.disconnect();
             }
         }
-
+        //upon completion notify the user and return to the previous screen
         @Override
         protected void onPostExecute(Void void1) {
             Toast.makeText(ctx, "Deleted the student!", Toast.LENGTH_SHORT).show();
@@ -160,7 +156,7 @@ public class ApiHelper {
             ctx.startActivity(i);
         }
     }
-
+    //class to create a new student with passed in student object
     public static class CreateNewStudentTask extends AsyncTask<Void,Void,String> {
         private Context ctx;
         private Student student;
@@ -174,12 +170,14 @@ public class ApiHelper {
             HttpURLConnection urlConnection = null;
             try {
                 StringBuilder res = new StringBuilder();
+                //http connection code partially borrowed from https://blog.codavel.com/how-to-integrate-httpurlconnection
                 URL url = new URL("https://f617-47-161-26-166.ngrok-free.app/api/basic/");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
                 urlConnection.setRequestProperty("Content-Type", "application/json");
 
+                //data output stream code borrowed from https://www.geeksforgeeks.org/how-to-use-httpurlconnection-for-sending-http-post-requests-in-java/
                 try (DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream())) {
                     os.writeBytes(encodeStudent(student));
                     os.flush();
@@ -198,7 +196,7 @@ public class ApiHelper {
                 urlConnection.disconnect();
             }
         }
-
+        //upon completion notify the student was created and change activity to see all students
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(ctx, "The student has been added!", Toast.LENGTH_SHORT).show();
@@ -208,6 +206,7 @@ public class ApiHelper {
         }
     }
 
+    //class that performs an update to an existing student by the student id
     public static class UpdateStudentTask extends AsyncTask<Void,Void,String> {
         private Context ctx;
         private Student student;
@@ -221,12 +220,15 @@ public class ApiHelper {
             HttpURLConnection urlConnection = null;
             try {
                 StringBuilder res = new StringBuilder();
+                //http connection code partially borrowed from https://blog.codavel.com/how-to-integrate-httpurlconnection
+                //code modified to perform Patch functionality
                 URL url = new URL("https://f617-47-161-26-166.ngrok-free.app/api/basic/" + student.getId() + "/");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("PATCH");
                 urlConnection.setDoOutput(true);
                 urlConnection.setRequestProperty("Content-Type", "application/json");
 
+                //data output stream code borrowed from https://www.geeksforgeeks.org/how-to-use-httpurlconnection-for-sending-http-post-requests-in-java/
                 try (DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream())) {
                     os.writeBytes(encodeStudent(student));
                     os.flush();
@@ -246,6 +248,7 @@ public class ApiHelper {
             }
         }
 
+        //upon completion notify the user and change activity to see all students
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(ctx, "The student has been updated!", Toast.LENGTH_SHORT).show();
