@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModifyStudentActivity"
+    android:background="#1B1B1B"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/modifystudenttitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modify Student"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#B5B5B5"
+        android:paddingBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/editstudentid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:textColor="#B5B5B5"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/editstudentfirstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:hint="Enter Student First Name"
+        android:textColor="#B5B5B5"/>
+
+    <EditText
+        android:id="@+id/editstudentlastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:hint="Enter Student Last Name"
+        android:textColor="#B5B5B5"/>
+
+    <EditText
+        android:id="@+id/editstudentaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:hint="Enter Student Address"
+        android:textColor="#B5B5B5"/>
+
+    <EditText
+        android:id="@+id/editstudentrollnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:inputType="numberSigned"
+        android:hint="Enter Roll Number"
+        android:textColor="#B5B5B5"/>
+
+    <EditText
+        android:id="@+id/editstudentmobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColorHint="#757575"
+        android:textColor="#B5B5B5"
+        android:hint="Enter Phone Number"/>
+
+    <Button
+        android:id="@+id/modifynewstudentbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Modify Student"
+        android:textAllCaps="false"
+        android:backgroundTint="#4A4949"
+        android:layout_gravity="center"
+        android:paddingHorizontal="65dp" />
+
+    <Button
+        android:id="@+id/backbtn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:backgroundTint="#4A4949"
+        android:layout_gravity="center"
+        android:paddingHorizontal="85dp" />
+</LinearLayout>

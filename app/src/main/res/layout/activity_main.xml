@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#082933">
+
+    <TextView
+        android:id="@+id/apptitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Students API App"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#B5B5B5"
+        />
+    <TextView
+        android:id="@+id/appsubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CSI-460 Final Project by Michael Splaver"
+        android:textAlignment="center"
+        android:textSize="15dp"
+        android:textColor="#B5B5B5"
+        android:layout_below="@id/apptitle"
+        />
+    <ImageView
+        android:id="@+id/bannerimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/apibanner" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bannerimage"
+        android:layout_marginHorizontal="100dp">
+        <Button
+            android:id="@+id/viewstudentsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View All Students"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="#0F7C7C"/>
+        <Button
+            android:id="@+id/addstudentbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add New Student"
+            android:layout_below="@id/viewstudentsbtn"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="#0F7C7C" />
+        <Button
+            android:id="@+id/modifydeletestudentbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modify or Delete Student"
+            android:layout_below="@id/addstudentbtn"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="#0F7C7C" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
